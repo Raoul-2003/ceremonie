@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#003b18" />
+    <title>Soutarah Countdown</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="application" aria-label="Compte Ã  rebours Soutarah">
+      <section class="poster-stage" aria-labelledby="event-title">
+        <img
+          class="poster"
+          src="images/affiche-soutarah.jpeg"
+          alt="Affiche de la cÃ©rÃ©monie officielle de remise de financement Soutarah"
+        />
+
+        <div class="countdown-card">
+          <p class="countdown-label">PLUS QUE</p>
+          <div id="jour" class="countdown-value" aria-live="polite">â€”</div>
+          <p id="countdown-detail" class="countdown-detail">AVANT LA CÃ‰RÃ‰MONIE</p>
+        </div>
+
+        <h1 id="event-title" class="sr-only">
+          CÃ©rÃ©monie officielle de remise de financement
+        </h1>
+      </section>
+
+      <aside class="clock-panel" aria-label="Date et heure actuelles">
+        <span id="date" class="clock-date"></span>
+        <time id="heure" class="clock-time"></time>
+      </aside>
+
+      <button id="fullscreen-button" class="fullscreen-button" type="button">
+        <span aria-hidden="true">â›¶</span>
+        Plein Ã©cran
+      </button>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="js/countdown.js"></script>
+  </body>
+</html>
