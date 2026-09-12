@@ -83,6 +83,14 @@
     dateElement.textContent = date.charAt(0).toUpperCase() + date.slice(1);
     heureElement.textContent = maintenant.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
     heureElement.dateTime = maintenant.toISOString();
+
+    // Jouer le son tous les jours à 16h00 précises
+    if (maintenant.getHours() === 16 && maintenant.getMinutes() === 0 && maintenant.getSeconds() === 0) {
+      const audio = document.getElementById("notif-audio");
+      if (audio) {
+        audio.play().catch(e => console.warn("Lecture audio bloquée par le navigateur :", e));
+      }
+    }
   }
 
   async function basculerPleinEcran() {
