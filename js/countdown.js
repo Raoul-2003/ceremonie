@@ -1,6 +1,45 @@
 (() => {
   "use strict";
 
+  /* --- CAROUSEL LOGIC --- */
+  const items = document.querySelectorAll(".carousel-item");
+  const indicators = document.querySelectorAll(".carousel-indicators button");
+  const btnPrev = document.querySelector(".carousel-control.prev");
+  const btnNext = document.querySelector(".carousel-control.next");
+  let currentIndex = 0;
+  let carouselInterval;
+
+  function goToSlide(index) {
+    items[currentIndex].classList.remove("active");
+    indicators[currentIndex].classList.remove("active");
+    
+    currentIndex = (index + items.length) % items.length;
+    
+    items[currentIndex].classList.add("active");
+    indicators[currentIndex].classList.add("active");
+  }
+
+  function nextSlide() { goToSlide(currentIndex + 1); }
+  function prevSlide() { goToSlide(currentIndex - 1); }
+
+  function startCarousel() {
+    carouselInterval = setInterval(nextSlide, 3000);
+  }
+  function resetCarousel() {
+    clearInterval(carouselInterval);
+    startCarousel();
+  }
+
+  if (items.length > 0) {
+    btnNext.addEventListener("click", () => { nextSlide(); resetCarousel(); });
+    btnPrev.addEventListener("click", () => { prevSlide(); resetCarousel(); });
+    indicators.forEach((ind, i) => {
+      ind.addEventListener("click", () => { goToSlide(i); resetCarousel(); });
+    });
+    startCarousel();
+  }
+  /* --- FIN CAROUSEL LOGIC --- */
+
   const jourElement = document.getElementById("jour");
   const detailElement = document.getElementById("countdown-detail");
   const dateElement = document.getElementById("date");
