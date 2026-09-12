@@ -67,13 +67,14 @@ button { font: inherit; }
 .carousel-caption {
   position: absolute;
   bottom: 25%;
-  right: 5%;
+  right: 4%;
   background: rgba(0, 47, 18, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-left: 4px solid var(--gold);
   border-radius: 12px;
   padding: 15px 25px;
-  max-width: 80%;
+  width: max-content;
+  max-width: 45%;
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   opacity: 0;
