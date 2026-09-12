@@ -63,6 +63,47 @@ button { font: inherit; }
   z-index: 1;
 }
 
+/* Légende pour les officiels */
+.carousel-caption {
+  position: absolute;
+  bottom: 25%;
+  right: 5%;
+  background: rgba(0, 47, 18, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 4px solid var(--gold);
+  border-radius: 12px;
+  padding: 15px 25px;
+  max-width: 80%;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s;
+  color: var(--white);
+  text-align: right;
+  z-index: 2;
+}
+.carousel-item.active .carousel-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+.carousel-caption h2 {
+  margin: 0 0 5px 0;
+  font-size: clamp(18px, 3vw, 32px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.carousel-caption p {
+  margin: 0;
+  font-size: clamp(12px, 1.8vw, 18px);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--gold);
+}
+
 /* Contrôles du carousel */
 .carousel-control {
   position: absolute;
