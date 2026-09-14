@@ -82,13 +82,23 @@
     const date = maintenant.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
     dateElement.textContent = date.charAt(0).toUpperCase() + date.slice(1);
 
-    let diff = evenement.getTime() - maintenant.getTime();
-    if (diff < 0) {
-      diff = 0;
+    const millisecondesParJour = 24 * 60 * 60 * 1000;
+    const joursRestants = Math.round((debutDeJour(evenement) - debutDeJour(maintenant)) / millisecondesParJour);
+    
+    let diffMs = 0;
+    if (joursRestants > 0) {
+      // Jusqu'à minuit aujourd'hui (fin de la journée)
+      const minuit = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate() + 1);
+      diffMs = minuit.getTime() - maintenant.getTime();
+    } else if (joursRestants === 0) {
+      // Le Jour J : jusqu'à l'heure de l'événement
+      diffMs = evenement.getTime() - maintenant.getTime();
+      if (diffMs < 0) diffMs = 0;
     }
-    const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const secondes = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const heures = Math.floor(diffMs / (1000 * 60 * 60));
+    const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const secondes = Math.floor((diffMs % (1000 * 60)) / 1000);
 
     const hStr = heures.toString().padStart(2, '0');
     const mStr = minutes.toString().padStart(2, '0');
