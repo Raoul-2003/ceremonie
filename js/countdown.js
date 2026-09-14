@@ -81,7 +81,20 @@
     const maintenant = new Date();
     const date = maintenant.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
     dateElement.textContent = date.charAt(0).toUpperCase() + date.slice(1);
-    heureElement.textContent = maintenant.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+
+    let diff = evenement.getTime() - maintenant.getTime();
+    if (diff < 0) {
+      diff = 0;
+    }
+    const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secondes = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const hStr = heures.toString().padStart(2, '0');
+    const mStr = minutes.toString().padStart(2, '0');
+    const sStr = secondes.toString().padStart(2, '0');
+
+    heureElement.textContent = `${hStr}:${mStr}:${sStr}`;
     heureElement.dateTime = maintenant.toISOString();
 
     // Jouer le son tous les jours à 16h00 précises
