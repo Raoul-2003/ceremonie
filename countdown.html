@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#003b18" />
+    <title>Soutarah Countdown</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/vehicles.css" />
+  </head>
+  <body>
+    <main class="application" aria-label="Compte à rebours Soutarah">
+      <section class="poster-stage" aria-labelledby="event-title">
+        <!-- CAROUSEL -->
+        <div class="carousel" id="posterCarousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images/bg-3d.jpg" class="poster" alt="Affiche 3D">
+            </div>
+            <div class="carousel-item">
+              <img src="images/affiche-soutarah.jpeg" class="poster" alt="Affiche Originale">
+            </div>
+            <div class="carousel-item">
+              <img src="images/zei.jpeg" class="poster poster-contain" alt="Zei">
+              <div class="carousel-caption">
+                <h2>Kologo Chigata Zeinab</h2>
+                <p>Gérante de SOUTARAH GROUP</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/boss.jpeg" class="poster poster-contain" alt="Boss">
+              <div class="carousel-caption">
+                <h2>Kologo Chigata Zeinab</h2>
+                <p>Gérante de SOUTARAH GROUP</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/banderole.jpeg" class="poster poster-contain" alt="Banderole">
+            </div>
+            <div class="carousel-item">
+              <img src="images/bamba.png" class="poster poster-contain" alt="Bamba">
+              <div class="carousel-caption">
+                <h2>Abou BAMBA</h2>
+                <p>Ministre de l'Environnement et de la Transition Écologique</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/siandou.png" class="poster poster-contain" alt="Siandou">
+              <div class="carousel-caption">
+                <h2>Fofana Siandou</h2>
+                <p>Ministre du Tourisme et des Loisirs</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/MODERATEUR.png" class="poster poster-contain" alt="Modérateur">
+              <div class="carousel-caption">
+                <h2>LANDRY KUYO</h2>
+                <p>Modérateur</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contrôles -->
+          <button class="carousel-control prev" type="button" aria-label="Précédent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="carousel-control next" type="button" aria-label="Suivant">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+
+          <!-- Indicateurs -->
+          <div class="carousel-indicators">
+            <button type="button" class="active" aria-label="Slide 1"></button>
+            <button type="button" aria-label="Slide 2"></button>
+            <button type="button" aria-label="Slide 3"></button>
+            <button type="button" aria-label="Slide 4"></button>
+            <button type="button" aria-label="Slide 5"></button>
+            <button type="button" aria-label="Slide 6"></button>
+            <button type="button" aria-label="Slide 7"></button>
+            <button type="button" aria-label="Slide 8"></button>
+          </div>
+        </div>
+        <!-- FIN CAROUSEL -->
+
+        <!-- Overlay Haut pour masquer le logo original et afficher le nouveau proprement -->
+        <header class="poster-header">
+          <img src="images/soutarah.png" alt="Soutarah Group" class="brand-logo" />
+        </header>
+
+        <h1 id="event-title" class="sr-only">
+          Cérémonie officielle de remise de financement
+        </h1>
+
+        <div class="countdown-card">
+          <p class="countdown-label">PLUS QUE</p>
+          <div id="jour" class="countdown-value" aria-live="polite">—</div>
+          <p id="countdown-detail" class="countdown-detail">AVANT LA CÉRÉMONIE</p>
+        </div>
+
+        <!-- Overlay Bas pour masquer les partenaires et arranger les infos -->
+        <footer class="poster-footer">
+          <div class="info-block">
+            <span class="info-label">DATE</span>
+            <span class="info-val">Jeudi 24 Septembre 2026</span>
+          </div>
+          <div class="info-sep"></div>
+          <div class="info-block">
+            <span class="info-label">LIEU</span>
+            <span class="info-val">Hôtel des Armées — Plateau</span>
+          </div>
+          <div class="info-sep"></div>
+          <div class="clock-panel" aria-label="Date et heure actuelles">
+            <span id="date" class="clock-date"></span>
+            <time id="heure" class="clock-time"></time>
+          </div>
+        </footer>
+      </section>
+
+      <button id="fullscreen-button" class="fullscreen-button" type="button">
+        <span aria-hidden="true">⛶</span>
+        Plein écran
+      </button>
+      <button id="mute-button" class="mute-button" type="button" aria-label="Couper la musique">
+        <span aria-hidden="true">🔊</span>
+      </button>
+    </main>
+
+    <audio id="notif-audio" src="images/son.mp3" preload="auto"></audio>
+    <audio id="bg-music" src="images/2.mp3" autoplay loop preload="auto"></audio>
+    <script src="config.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/vehicles.js"></script>
+    <script>
+      /* Raccourci secret : Ctrl+Shift+V pour prévisualiser le showroom */
+      document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.key === 'V') {
+          const mainApp = document.querySelector('.application');
+          if (mainApp) {
+            mainApp.style.transition = 'opacity 1.2s ease';
+            mainApp.style.opacity = '0';
+            setTimeout(() => {
+              mainApp.style.display = 'none';
+              /* Déclenche directement le buildShowcase en simulant CONFIG.evenement = passé */
+              var oldEvt = CONFIG.evenement;
+              Object.defineProperty(window, '_vp_preview', { value: true, writable: true });
+              /* On reconstruit un CONFIG temporaire pour bypass */
+              window._vpLaunch && window._vpLaunch();
+            }, 1200);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
