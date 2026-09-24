@@ -169,10 +169,8 @@
     const headerArea = document.querySelector(".vp-header-area");
     if (!mediaContainer || !headerArea) return;
 
-    // Reset animation
-    headerArea.style.animation = 'none';
-    void headerArea.offsetWidth; // Trigger reflow
-    headerArea.style.animation = 'vp-card-enter 1s 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards';
+    // Reset
+    headerArea.style.opacity = '1';
 
     // Update Text
     const catParts = v.category.split('—');
