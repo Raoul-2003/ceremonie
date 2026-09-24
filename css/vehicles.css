@@ -7,12 +7,11 @@
 #vehicle-showcase {
   position: fixed;
   inset: 0;
-  display: none;
+  display: flex;
   background: #f2f2f2;
   font-family: 'Inter', Arial, sans-serif;
   overflow: hidden;
-  opacity: 0;
-  transition: opacity 1.2s ease;
+  opacity: 1;
   z-index: 9999;
 
   /* Flexbox vertical layout — header / media / footer */

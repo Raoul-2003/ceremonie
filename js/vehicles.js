@@ -342,28 +342,12 @@
   function launchVehicleShowcase() {
     if (isLaunched) return; // Déjà lancé
     isLaunched = true;
-    
-    // Keep background music playing or start it if paused
-    const bgMusic = document.getElementById("bg-music");
-    if (bgMusic && bgMusic.paused) {
-      bgMusic.volume = 0.4;
-      bgMusic.play().catch(()=>{});
-    }
 
     const mainApp = document.querySelector(".application");
-    if (mainApp) {
-      mainApp.style.transition = "opacity 1s ease";
-      mainApp.style.opacity = "0";
-      setTimeout(() => {
-        mainApp.style.display = "none";
-        buildShowcase();
-        showcase.style.display = "block";
-        
-        // Force reflow
-        void showcase.offsetWidth;
-        showcase.style.opacity = "1";
-      }, 1000);
-    }
+    if (mainApp) mainApp.style.display = "none";
+
+    buildShowcase();
+    showcase.style.opacity = "1";
   }
 
   window._vpLaunch = launchVehicleShowcase;
