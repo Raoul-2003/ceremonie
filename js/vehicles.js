@@ -292,6 +292,20 @@
         <div id="vp-progress-bar" class="vp-progress-bar"></div>
       </div>
 
+      <!-- Bouton Son (coin haut droit) -->
+      <button id="vp-sound-btn" class="vp-sound-btn" aria-label="Couper le son">
+        <svg id="vp-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        </svg>
+        <svg id="vp-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24" style="display:none">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+      </button>
+
       <!-- Header Area (Top) -->
       <header class="vp-header-area">
         <img src="images/soutarah.png" alt="Soutarah Group" class="vp-logo" />
@@ -324,11 +338,30 @@
 
     document.body.appendChild(showcase);
 
+    /* Audio */
+    var audio = new Audio('images/2.mp3');
+    audio.loop = true;
+    audio.volume = 0.5;
+    audio.play().catch(function() {});
+
+    /* Bouton son */
+    document.getElementById('vp-sound-btn').addEventListener('click', function() {
+      if (audio.muted) {
+        audio.muted = false;
+        document.getElementById('vp-icon-on').style.display = '';
+        document.getElementById('vp-icon-off').style.display = 'none';
+      } else {
+        audio.muted = true;
+        document.getElementById('vp-icon-on').style.display = 'none';
+        document.getElementById('vp-icon-off').style.display = '';
+      }
+    });
+
     /* Interactions */
-    document.getElementById("vp-next").addEventListener("click", () => { nextVehicle(); resetTimer(); });
-    document.getElementById("vp-prev").addEventListener("click", () => { prevVehicle(); resetTimer(); });
-    document.querySelectorAll(".vp-dot").forEach((dot, i) => {
-      dot.addEventListener("click", () => { goTo(i); resetTimer(); });
+    document.getElementById("vp-next").addEventListener("click", function() { nextVehicle(); resetTimer(); });
+    document.getElementById("vp-prev").addEventListener("click", function() { prevVehicle(); resetTimer(); });
+    document.querySelectorAll(".vp-dot").forEach(function(dot, i) {
+      dot.addEventListener("click", function() { goTo(i); resetTimer(); });
     });
 
     /* Render first vehicle */
