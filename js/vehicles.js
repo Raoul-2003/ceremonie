@@ -60,7 +60,12 @@
       subtitle: "L'Aventurier Incontournable",
       category: "SUV TOUT-TERRAIN — FLOTTE SOUTARAH",
       specs: ["Hybride 1.5L Allgrip", "102 ch / 135 Nm", "4WD Auto intelligent", "Toit panoramique"],
-      media: ["images/image/Grand Vitara1.png", "images/image/Grand Vitara2.png", "images/image/Grand Vitara3.png", "images/image/Grand Vitara5.png"]
+      media: [
+        "images/image/Grand%20Vitara1.png",
+        "images/image/Grand%20Vitara2.png",
+        "images/image/Grand%20Vitara3.png",
+        "images/image/Grand%20Vitara5.png"
+      ]
     },
     {
       id: 8,
@@ -84,7 +89,12 @@
       subtitle: "La Livraison Rapide",
       category: "FOURGON — FLOTTE SOUTARAH",
       specs: ["Diesel economique", "Grande capacite", "Fiabilite Renault"],
-      media: ["images/image/Van Express1.png", "images/image/Van Express2.jpg", "images/image/Van Express3.png", "images/image/Renault Van express.png"]
+      media: [
+        "images/image/Van%20Express1.png",
+        "images/image/Van%20Express2.jpg",
+        "images/image/Van%20Express3.png",
+        "images/image/Renault%20Van%20express.png"
+      ]
     },
     {
       id: 11,
